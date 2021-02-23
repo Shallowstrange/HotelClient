@@ -10,12 +10,21 @@ using System.Windows.Forms;
 
 namespace HotelRegulator
 {
-    public partial class Form1 : Form
+    public partial class FrmMain : Form
     {
-        public Form1()
+        public FrmMain()
         {
             InitializeComponent();
-            MessageBox.Show("袁仪");
+        }
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
