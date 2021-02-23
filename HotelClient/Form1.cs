@@ -15,6 +15,7 @@ namespace HotelRegulator
         public Form1()
         {
             InitializeComponent();
+            MessageBox.Show("袁仪");
         }
     }
 }
