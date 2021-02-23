@@ -8,18 +8,32 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using HotelModel;
+using HotelBLL;
 
 namespace HotelRegulator
 {
     public partial class FrmMain : Form
     {
+        private UserLoginManager userLoginManager = new UserLoginManager();
         public FrmMain()
         {
             InitializeComponent();
         }
         private void BtnEnter_Click(object sender, EventArgs e)
         {
-            
+            UserLogin userLogin = userLoginManager.userLogin(txtAccount.Text,txtPassword.Text);
+            if (userLogin != null)
+            {
+
+                FrmMenu menu = new FrmMenu();
+                menu.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("登录失败，账号或密码错误!!");
+            }
         }
     }
 }

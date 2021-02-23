@@ -47,6 +47,7 @@
     <Compile Include="RoomSchedules.cs" />
     <Compile Include="RoomStatus.cs" />
     <Compile Include="RoomTypeTable.cs" />
+    <Compile Include="UserLogin.cs" />
     <Compile Include="UserRechargeTable.cs" />
     <Compile Include="UserTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
