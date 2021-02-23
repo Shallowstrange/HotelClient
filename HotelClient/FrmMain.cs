@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace HotelRegulator
 {
@@ -16,15 +17,9 @@ namespace HotelRegulator
         {
             InitializeComponent();
         }
-
-        private void FrmMain_Load(object sender, EventArgs e)
+        private void BtnEnter_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void TextBox1_TextChanged(object sender, EventArgs e)
-        {
-
+            
         }
     }
 }
