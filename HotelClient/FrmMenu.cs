@@ -23,5 +23,11 @@ namespace HotelRegulator
             lblName.Text="欢迎"+Name+"光临";
             Win32.AnimateWindow(this.Handle, 300, Win32.AW_HOR_POSITIVE);
         }
+
+        private void PictureBox2_Click(object sender, EventArgs e)
+        {
+            RoomStatusAndInformation room = new RoomStatusAndInformation();
+            room.Show();
+        }
     } 
 }
