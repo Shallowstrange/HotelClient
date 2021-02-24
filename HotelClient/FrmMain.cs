@@ -23,10 +23,11 @@ namespace HotelRegulator
         private void BtnEnter_Click(object sender, EventArgs e)
         {
             UserLogin userLogin = userLoginManager.userLogin(txtAccount.Text,txtPassword.Text);
+            string name = userLogin.UserName;
             if (userLogin != null)
             {
-
                 FrmMenu menu = new FrmMenu();
+                menu.Name = name;
                 menu.Show();
                 this.Hide();
             }

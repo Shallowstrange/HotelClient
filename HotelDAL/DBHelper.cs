@@ -61,7 +61,10 @@ namespace HotelDAL
             SqlCommand cmd = new SqlCommand(sql, Conn);
             if (sp != null)
             {
-                cmd.Parameters.AddRange(sp);
+                foreach (var param in sp)
+                {
+                    cmd.Parameters.Add(param);
+                }
             }
             return cmd;
         }
@@ -108,7 +111,7 @@ namespace HotelDAL
         /// <summary>
         /// 多行查询
         /// </summary>
-        public SqlDataReader ExecuteReader(string sql, SqlParameter[] sp)
+        public SqlDataReader ExecuteReader(string sql,params SqlParameter[] sp)
         {
             try
             {
@@ -127,7 +130,7 @@ namespace HotelDAL
         /// <param name="sql">SQL语句</param>
         /// <param name="sp">参数列表</param>
         /// <param name="tableName">操作表表名</param>
-        public DataTable GetTable(string sql, SqlParameter[] sp, string tableName = "")
+        public DataTable GetTable(string sql, string tableName = "tableName",params SqlParameter[] sp)
         {
             DataSet ds = new DataSet();
             try
