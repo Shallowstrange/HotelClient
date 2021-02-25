@@ -12,7 +12,7 @@ namespace HotelBLL
     {
         private RoomStatusDataLayer dataLayer = new RoomStatusDataLayer();
 
-        public List<RoomSchedules> rooms(string roomNumber)
+        public RoomSchedules rooms(string roomNumber)
         {
             return dataLayer.Rooms(roomNumber);
         }

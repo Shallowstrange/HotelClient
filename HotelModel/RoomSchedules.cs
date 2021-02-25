@@ -18,11 +18,11 @@ namespace HotelModel
         /// <summary>
         /// 房间类型
         /// </summary>
-        public RoomTypeTable RoomType { get; set; }
+        public string RoomType { get; set; }
         /// <summary>
         /// 房间状态
         /// </summary>
-        public RoomStatus RoomStatus { get; set; }
+        public string RoomStatus { get; set; }
         /// <summary>
         /// 房间楼层名称
         /// </summary>

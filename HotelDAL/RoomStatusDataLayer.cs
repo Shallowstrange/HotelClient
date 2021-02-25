@@ -1,43 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HotelModel;
+﻿using HotelModel;
 using System.Data.SqlClient;
-using System.Data;
 
 namespace HotelDAL
 {
     public class RoomStatusDataLayer
     {
         DBHelper dB = new DBHelper();
-
-        public List<RoomSchedules> Rooms(string roomNumber)
+        public RoomSchedules Rooms(string roomNumber)
         {
-            List<RoomSchedules> rooms = new List<RoomSchedules>();
-            string Sql = "select a.RoomNumber,r.name,b.StatusName from RoomSchedules a inner join RoomTypeTable r on r.No = a.RoomTypeinner join RoomStatus b on b.No = a.RoomStatus where 1=1";
+            RoomSchedules room = null;
+            string Sql = "select RoomNumber,[Floor],T.Name,R.StatusName from RoomSchedules S join RoomTypeTable T on S.RoomType=T.[No] join RoomStatus R on R.No= S.RoomStatus where S.RoomNumber = @RoomNumber";
 
-            SqlParameter[] sp = null;
-
-            if (roomNumber != "")
+            SqlParameter[] sp =
             {
-                Sql += " and a.RoomNumber like '%"+roomNumber+"%'";
-            }
-
-            DataTable dt = dB.GetTable(Sql, "a.RoomNumber", sp);
-
-            foreach (DataRow item in dt.Rows)
+                new SqlParameter("@RoomNumber",roomNumber)
+            };
+            SqlDataReader dr = dB.ExecuteReader(Sql, sp);
+            if (dr.Read())
             {
-                RoomSchedules room = new RoomSchedules
+                room = new RoomSchedules
                 {
-                    RoomNumber = item["a.RoomNumber"].ToString(),
-                    RoomType=(RoomTypeTable)item["r.name"],
-                    RoomStatus=(RoomStatus)item["b.StatusName"]
+                    RoomNumber = dr["RoomNumber"].ToString(),
+                    RoomType = dr["Name"].ToString(),
+                    RoomStatus = dr["StatusName"].ToString(),
+                    Floor = dr["Floor"].ToString()
                 };
-                rooms.Add(room);
             }
-            return rooms;
+            return room;
         }
     }
 }
