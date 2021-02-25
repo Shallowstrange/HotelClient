@@ -16,6 +16,7 @@ namespace HotelRegulator
     {
         public string Name;
         public string RoomNumber;
+        public string IDCard;
         public FrmMenu()
         {
             InitializeComponent();
@@ -35,6 +36,21 @@ namespace HotelRegulator
             frmState.roomType = roomSchedules.RoomType;
             frmState.floor = roomSchedules.Floor;
             frmState.Show();
+        }
+
+        private void PictureBox1_Click(object sender, EventArgs e)
+        {
+            ReportBusinessLayerManager report = new ReportBusinessLayerManager();
+            StatementOfAccount statement = report.Soa(IDCard);
+            FrmReportForm frm = new FrmReportForm();
+
+            frm.roomNumber = statement.RoomNumber;
+            frm.IDCard = statement.IDCard;
+            frm.money = statement.money;
+            frm.Describe = statement.Describe;
+            frm.SpendingTime = statement.SpendingTime;
+            frm.TotalConsumption = statement.TotalConsumption;
+
         }
     } 
 }

@@ -29,6 +29,7 @@ namespace HotelRegulator
                 FrmMenu menu = new FrmMenu();
                 menu.Name = name;
                 menu.RoomNumber = txtAccount.Text;
+                menu.IDCard = txtPassword.Text;
                 menu.Show();
                 this.Hide();
             }
